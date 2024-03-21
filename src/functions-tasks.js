@@ -177,8 +177,9 @@ function logger(func, logFunc) {
   return (...args) => {
     const argsList = args.map((arg) => JSON.stringify(arg)).join(',');
     logFunc(`${func.name}(${argsList}) starts`);
-    return func(...args);
+    const res = func(...args);
     logFunc(`${func.name}(${argsList}) ends`);
+    return res;
   };
 }
 
